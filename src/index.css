@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 204 94% 48%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 204 94% 48%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-electric/10 selection:text-electric;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg;
+  }
+  
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+
+  .glass-dark {
+    @apply bg-neutral-900/80 backdrop-blur-xl border border-neutral-800/50 shadow-lg;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mask-linear-gradient {
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  }
+  
+  .sheen-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sheen-effect::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(45deg);
+    animation: sheen 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes sheen {
+    0% {
+      transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(200%) rotate(45deg);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-900 {
+  animation-delay: 900ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Map animations and transitions */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animation-pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.animation-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animation-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Enhanced map markers */
+.property-marker svg,
+.hospital-marker svg,
+.mall-marker svg,
+.police-marker svg {
+  transition: all 0.3s ease-out;
+}
+
+.property-marker:hover svg,
+.hospital-marker:hover svg,
+.mall-marker:hover svg,
+.police-marker:hover svg {
+  transform: scale(1.2);
+}
+
+.wind-arrow svg {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Leaflet cluster customization */
+.marker-cluster {
+  background-color: rgba(59, 130, 246, 0.6);
+  border: 3px solid rgba(59, 130, 246, 0.3);
+  color: white;
+  font-weight: bold;
+}
+
+.marker-cluster div {
+  background-color: rgba(59, 130, 246, 0.8);
+  color: white;
+}
+
+/* Elevation markers */
+.elevation-marker div {
+  transition: all 0.3s ease-out;
+}
+
+.elevation-marker:hover div {
+  transform: scale(1.1);
+}
+
+/* Weather info bar */
+.weather-marker div {
+  transition: all 0.3s ease;
+}
+
+.weather-marker:hover div {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
