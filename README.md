@@ -214,6 +214,4 @@ For any questions or feedback, please contact:
 
 OMRHomes aims to revolutionize the way property buyers in OMR explore real estate opportunities. Enjoy exploring and happy house hunting!
 
----
 
-This README provides a comprehensive guide for developers and users alike, ensuring clarity, ease of setup, and a deep understanding of the project’s capabilities and vision.
